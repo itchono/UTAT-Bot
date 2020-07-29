@@ -30,7 +30,9 @@ async def thread(ctx:commands.Context, threadName, members: commands.Greedy[disc
 
     people = [ctx.author] + members
 
-    await chn.send(f"This thread was created by {' '.join([p.mention for p in people])}")
+    m = await chn.send(f"This thread was created by {' '.join([p.mention for p in people])}\nLink to original message: {ctx.message.jump_url}")
+    await m.pin()
+
 
 @client.event
 async def on_ready():
